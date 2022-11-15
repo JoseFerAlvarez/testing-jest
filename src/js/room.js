@@ -1,7 +1,7 @@
 class Room {
-    constructor(name, rate, discount) {
+    constructor(name, bookings, rate, discount) {
         this.name = name;
-        this.bookings = [];
+        this.bookings = bookings;
         this.rate = rate;
         this.discount = discount;
     }
@@ -39,13 +39,13 @@ class Room {
 
     static totalOccupancyPercentage = (rooms, startDate, endDate) => {
         let count = 0;
-        let bookingsnum = 0;
+        let bookingsCount = 0;
 
         if (rooms.length > 0) {
             rooms.forEach((room) => {
                 if (room.bookings.length > 0) {
                     room.bookings.forEach((booking) => {
-                        bookingsnum++;
+                        bookingsCount++;
                         if (booking.checkIn.getTime() >= startDate.getTime() && booking.checkOut.getTime() < endDate.getTime()) {
                             count++;
                         }
@@ -53,7 +53,7 @@ class Room {
                 }
             });
         }
-        return (count * 100) / bookingsnum;
+        return (count * 100) / bookingsCount;
     }
 
     static availableRooms = (rooms, startDate, endDate) => {
@@ -65,7 +65,7 @@ class Room {
             }
         });
 
-        return availablerooms.length;
+        return availablerooms;
     }
 }
 

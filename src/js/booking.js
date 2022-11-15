@@ -13,7 +13,7 @@ class Booking {
         const roomdiscount = this.room.discount;
         const bookingdiscount = this.discount;
 
-        return (((roomprice * (100 - roomdiscount)) / 100) * (100 - bookingdiscount)) / 100
+        return (((roomprice * (100 - roomdiscount)) / 100) * (100 - bookingdiscount)) / 100;
     }
 }
 
