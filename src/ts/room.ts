@@ -21,7 +21,7 @@ class Room {
         let occupied: boolean = false;
 
         if (this.bookings.length > 0) {
-            this.bookings.forEach((booking) => {
+            this.bookings.forEach((booking: Booking) => {
                 if (date.getTime() >= booking.checkIn.getTime() && date.getTime() < booking.checkOut.getTime()) {
                     occupied = true;
                 }
@@ -32,10 +32,10 @@ class Room {
     };
 
     occupancyPercentage(startDate: Date, endDate: Date): number {
-        let count = 0;
+        let count: number = 0;
 
         if (this.bookings.length > 0) {
-            this.bookings.forEach((booking) => {
+            this.bookings.forEach((booking: Booking) => {
                 if (booking.checkIn.getTime() >= startDate.getTime() && booking.checkOut.getTime() < endDate.getTime()) {
                     count++;
                 }
@@ -49,9 +49,9 @@ class Room {
         let bookingsCount: number = 0;
 
         if (rooms.length > 0) {
-            rooms.forEach((room) => {
+            rooms.forEach((room: Room) => {
                 if (room.bookings.length > 0) {
-                    room.bookings.forEach((booking) => {
+                    room.bookings.forEach((booking: Booking) => {
                         bookingsCount++;
                         if (booking.checkIn.getTime() >= startDate.getTime() && booking.checkOut.getTime() < endDate.getTime()) {
                             count++;
@@ -79,7 +79,7 @@ class Room {
 function roomIsAvailable(room: Room, startDate: Date, endDate: Date): boolean {
     let available: boolean = true;
 
-    room.bookings.forEach((booking) => {
+    room.bookings.forEach((booking: Booking) => {
         if (booking.checkIn.getTime() >= startDate.getTime() && booking.checkOut.getTime() < endDate.getTime()) {
             available = false;
         }

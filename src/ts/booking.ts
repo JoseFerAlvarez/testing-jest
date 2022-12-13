@@ -19,10 +19,12 @@ class Booking {
 
     getFee = (): number => {
         const roomprice: number = this.room.rate;
-        const roomdiscount: number = this.room.discount;
-        const bookingdiscount: number = this.discount;
+        const roomdiscount: number = (100 - this.room.discount) / 100;
+        const bookingdiscount: number = (100 - this.discount) / 100;
 
-        return (((roomprice * (100 - roomdiscount)) / 100) * (100 - bookingdiscount)) / 100;
+        const days: number = ((this.checkOut.getTime() - this.checkIn.getTime()) / (1000 * 60 * 60 * 24));
+
+        return ((roomprice * roomdiscount) * bookingdiscount) * days;
     }
 }
 

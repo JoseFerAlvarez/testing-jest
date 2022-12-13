@@ -81,5 +81,11 @@ test("Booking fee with discounts", function () {
     var RoomDuplex = new room_1.Room("Duplex", [], 5000, 20);
     var Booking1 = new booking_1.Booking("Jose", "jose@gmail.com", new Date("11/12/2022"), new Date("11/15/2022"), 50, RoomDuplex);
     RoomDuplex.setBookings([Booking1]);
-    expect(Booking1.getFee()).toBe(2000);
+    expect(Booking1.getFee()).toBe(6000);
+});
+test("Booking fee with discounts", function () {
+    var RoomDuplex = new room_1.Room("Duplex", [], 30000, 10);
+    var Booking1 = new booking_1.Booking("Jose", "jose@gmail.com", new Date("11/10/2022"), new Date("11/15/2022"), 20, RoomDuplex);
+    RoomDuplex.setBookings([Booking1]);
+    expect(Booking1.getFee()).toBe(108000);
 });

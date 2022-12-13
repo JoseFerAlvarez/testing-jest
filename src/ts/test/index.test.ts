@@ -109,5 +109,14 @@ test("Booking fee with discounts", (): void => {
 
     RoomDuplex.setBookings([Booking1]);
 
-    expect(Booking1.getFee()).toBe(2000);
+    expect(Booking1.getFee()).toBe(6000);
+});
+
+test("Booking fee with discounts", (): void => {
+    const RoomDuplex: Room = new Room("Duplex", [], 30000, 10);
+    const Booking1: Booking = new Booking("Jose", "jose@gmail.com", new Date("11/10/2022"), new Date("11/15/2022"), 20, RoomDuplex);
+
+    RoomDuplex.setBookings([Booking1]);
+
+    expect(Booking1.getFee()).toBe(108000);
 });
